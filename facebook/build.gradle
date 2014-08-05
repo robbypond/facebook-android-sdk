@@ -26,3 +26,16 @@ android {
         }
     }
 }
+
+
+if (JavaVersion.current().isJava8Compatible()) {
+    allprojects {
+      tasks.withType(Javadoc) {
+        options.addStringOption('Xdoclint:none', '-quiet')
+      }
+    }
+}
+  
+apply plugin: 'maven'
+
+apply from: 'https://raw.githubusercontent.com/robbypond/gradle-mvn-push/master/gradle-mvn-push.gradle'
